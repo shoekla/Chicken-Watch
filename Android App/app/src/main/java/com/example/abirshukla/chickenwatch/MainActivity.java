@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ArrayList<String> mp = getAllMedia();
-        ArrayList<String> names = new ArrayList<>();
+        final ArrayList<String> names = new ArrayList<>();
         for (String sa: mp) {
            names.add(sa.substring(sa.lastIndexOf("/")+1));
         }
@@ -80,8 +80,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                Intent v = new Intent(MainActivity.this,playvideo.class);
+                Intent v = new Intent(MainActivity.this,VideoMenu1.class);
                 v.putExtra("fileName", mp.get(position));
+                v.putExtra("videoName",names.get(position));
                 startActivity(v);
                 //Toast.makeText(MainActivity.this, mp.get(position), Toast.LENGTH_LONG).show();
 
