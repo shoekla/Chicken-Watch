@@ -31,12 +31,12 @@ public class playvideo extends FragmentActivity {
         //setContentView(R.layout.activity_playvideo);
         Bundle b = getIntent().getExtras();
         String file = b.getString("fileName");
-        String[] timesS = b.getString("times").split(",");
+        final String[] timesS = b.getString("times").split(",");
         times = new int[timesS.length];
-        System.out.println("Abir Data: int len:"+times.length);
+        //System.out.println("Abir Data: int len:"+times.length);
         for (int i = 0; i < timesS.length; i++) {
             times[i] = Integer.parseInt(timesS[i]);
-            System.out.println("Abir Data: "+times[i]);
+            //System.out.println("Abir Data: "+times[i]);
 
         }
 
@@ -44,9 +44,6 @@ public class playvideo extends FragmentActivity {
         videoView = (VideoView) findViewById(R.id.videoView);
         videoView.setVideoURI(Uri.parse(file));
         videoView.start();
-        for (int i = 0; i < timesS.length; i++) {
-            times[i] = (videoView.getDuration()/1000) - Integer.parseInt(timesS[i]);
-        }
 
         videoView.setMediaController(new MediaController(this));
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -55,10 +52,16 @@ public class playvideo extends FragmentActivity {
 
                                                 setDuration();
                                                 timerCounter();
+                                                for (int i = 0; i < timesS.length; i++) {
+                                                    times[i] = (videoView.getDuration()/1000) - Integer.parseInt(timesS[i]);
+                                                }
+                                                //System.out.println("Abir: Data: time[0]: "+times[0]);
+                                                //System.out.println("Abir: Data: Duration: "+(videoView.getDuration()/1000));
                                             }
                                         }
 
         );
+        //System.out.println("Abir: Data: Duration: "+(videoView.getDuration()/1000));
     }
 
     private Timer timer;
@@ -73,10 +76,12 @@ public class playvideo extends FragmentActivity {
 
                         int time = (duration - videoView.getCurrentPosition())/1000;
                         for (int i = 0; i < times.length;i++) {
+                        //System.out.println("Abir: Data: Duration: "+(videoView.getDuration()/1000));
+
                             int w = time - times[i];
-                            System.out.println("Abir Data: w: "+w);
-                            if (w < SettingUser.warn) {
-                                Toast.makeText(playvideo.this, "Jump Scare in "+ w, Toast.LENGTH_SHORT).show();
+                            //System.out.println("Abir Data: w: "+w);
+                            if (w <= SettingUser.warn+3 && w >=3) {
+                                Toast.makeText(playvideo.this, "Jump Scare in "+ (w-3), Toast.LENGTH_SHORT).show();
 
                             }
                         }

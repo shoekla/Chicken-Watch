@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="202e23f5b0be62c784ce3b64da6e3721b54cdfbc">
+        sha1="eb0b42baaf2076bdf2dcbeb7a5c0e74acbb7ce23">
         <dex dex="/Users/abirshukla/ChickenWatch/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_2de20dd0e910a3690253ad12c6696cf9b164eedd/classes.dex" />
     </item>
     <item
@@ -106,7 +106,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="73a98ef0b1f3a022a2925426009711f4a0a11da0">
+        sha1="3590d008b6a894d00323ced14e423881114cd45f">
         <dex dex="/Users/abirshukla/ChickenWatch/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_d889c60f0a15ea41491880b06aa4491f37639d70/classes.dex" />
     </item>
     <item

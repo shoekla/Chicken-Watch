@@ -26,28 +26,26 @@
 
     <Button
         android:text="Watch"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/textView4"
-        android:layout_marginEnd="22dp"
+
         android:id="@+id/button3"
         android:onClick="playReg"/>
 
-    <Button
-        android:text="Chicken Watch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button3"
-        android:layout_toEndOf="@+id/textView4"
-        android:id="@+id/button4"
-        android:onClick="chickenWatch"/>
-
     <TextView
         android:text="Jump Scare Times"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView4"
         android:layout_marginTop="11dp"
         android:id="@+id/textView5" />
+
+    <Button
+        android:text="Chicken Watch"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:onClick="chickenWatch"
+        android:layout_below="@+id/mobile_list" />
 </RelativeLayout>

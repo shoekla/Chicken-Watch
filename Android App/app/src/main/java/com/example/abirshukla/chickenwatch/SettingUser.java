@@ -6,4 +6,9 @@ package com.example.abirshukla.chickenwatch;
 
 public class SettingUser {
     public static int warn = 3;
+    public static boolean edit = true;
+
+    public static void setWarn(int w) {
+        warn = w;
+    }
 }

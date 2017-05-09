@@ -41,7 +41,7 @@ public class VideoMenu1 extends AppCompatActivity {
     public void chicken(View view) {
         progress.show();
         videoName = videoName.replace(" ","%20");
-        String url = "https://chickenwatch.herokuapp.com/movieChicken/get%20out/";
+        String url = "https://chickenwatch.herokuapp.com/movieChicken/"+videoName+"/";
         getHTML(url);
     }
     public void getHTML(final String url) {

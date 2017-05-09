@@ -1,6 +1,8 @@
 package com.example.abirshukla.chickenwatch;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Environment;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity {
-
+    SharedPreferences sharedPref;
     public static final String SD_CARD = "sdCard";
     public static final String EXTERNAL_SD_CARD = "externalSdCard";
 
@@ -65,8 +67,21 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        if (sharedPref != null) {
+            int sec = sharedPref.getInt("sec",-1);
+            System.out.println("Abir: D: "+sec);
+            if (sec != -1) {
+                if (SettingUser.edit) {
+                    SettingUser.setWarn(sec);
+                    SettingUser.edit = false;
+                }
+            }
+
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final ArrayList<String> mp = getAllMedia();
         final ArrayList<String> names = new ArrayList<>();
         for (String sa: mp) {
@@ -92,5 +107,33 @@ public class MainActivity extends AppCompatActivity {
 
         //TextView textView = (TextView) findViewById(R.id.textView);
         //textView.setText(s);
+    }
+    public void set(View view) {
+        Intent s = new Intent(MainActivity.this,Settings.class);
+        startActivity(s);
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("sec",SettingUser.warn);
+
+        super.onSaveInstanceState(savedInstanceState);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("sec",SettingUser.warn);
+        editor.commit();
+        super.onDestroy();
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        int sec = savedInstanceState.getInt("sec");
+        SettingUser.setWarn(sec);
     }
 }

@@ -28,7 +28,8 @@
             android:name=".playVidReg"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-        <activity android:name=".ChickenDetails"></activity>
+        <activity android:name=".ChickenDetails" />
+        <activity android:name=".Settings"></activity>
     </application>
 
 </manifest>
